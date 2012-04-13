@@ -5,17 +5,17 @@ void putchar_unicode(long c) {
 	if (c < 0x80) {
 		putchar(c);
 	} else if (c < 0x800) {
-		putchar(c >> 6 | 0xc0);
-		putchar(c & 0x3f | 0x80);
+		putchar((c >> 6) | 0xc0);
+		putchar((c & 0x3f) | 0x80);
 	} else if (c < 0x10000) {
-		putchar(c >> 12 | 0xe0);
-		putchar(c >> 6 & 0x3f | 0x80);
-		putchar(c & 0x3f | 0x80);
+		putchar((c >> 12) | 0xe0);
+		putchar((c >> 6 & 0x3f) | 0x80);
+		putchar((c & 0x3f) | 0x80);
 	} else {
-		putchar(c >> 18 | 0xf0);
-		putchar(c >> 12 & 0x3f | 0x80);
-		putchar(c >> 6 & 0x3f | 0x80);
-		putchar(c & 0x3f | 0x80);
+		putchar((c >> 18) | 0xf0);
+		putchar((c >> 12 & 0x3f) | 0x80);
+		putchar((c >> 6 & 0x3f) | 0x80);
+		putchar((c & 0x3f) | 0x80);
 	}
 }
 int help(void) {
@@ -43,12 +43,12 @@ void transpose_block(long s, long min, long max, long delta) {
 		else putchar(s);
 }
 int main(int argc, char** argv) {
-	if (argc < 2)
-		return help();
 	long transpose_type = 0,
 		caps, lower, num,
 		min, max, delta,
 		c;
+	if (argc < 2)
+		return help();
 	if (!strcmp(argv[1], "serifb")) {
 		transpose_type = 0;
 		caps = 119808 - 'A';
