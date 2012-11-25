@@ -38,9 +38,9 @@ void transpose_alphanum(long s, long caps, long lower, long num) {
 	else putchar(s);
 }
 void transpose_block(long s, long min, long max, long delta) {
-		if (s >= min && s <= max)
-			putchar_unicode(s + delta);
-		else putchar(s);
+	if (s >= min && s <= max)
+		putchar_unicode(s + delta);
+	else putchar(s);
 }
 int main(int argc, char** argv) {
 	long transpose_type = 0,
@@ -122,12 +122,12 @@ int main(int argc, char** argv) {
 	} else return help();
 	while ((c = getchar()) != EOF) {
 		switch (transpose_type) {
-			case 0:
-				transpose_alphanum(c, caps, lower, num);
-				break;
-			case 1:
-				transpose_block(c, min, max, delta);
-				break;
+		case 0:
+			transpose_alphanum(c, caps, lower, num);
+			break;
+		case 1:
+			transpose_block(c, min, max, delta);
+			break;
 		}
 	}
 	return 0;
